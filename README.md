@@ -8,27 +8,6 @@ Website link: <https://mbelgiu.github.io/Team_Mariana/>
 
 <span style="color:#0b6f6a"><strong>Key point:</strong></span> This repository contains a static website built with Jekyll and the al-folio theme. Most day-to-day edits are made in Markdown, YAML, BibTeX, image files, and a small amount of SCSS.
 
-Source directory:
-
-```bash
-/Users/fiko/MacAir_Documents/UT/Website_Mariana/Mariana_Group/work/research-group-site
-```
-
-Local preview command:
-
-```bash
-cd /Users/fiko/MacAir_Documents/UT/Website_Mariana/Mariana_Group/work/research-group-site
-../conda-ruby/bin/bundle exec jekyll serve --host 127.0.0.1 --port 4001 --baseurl '' --livereload --livereload-port 35731
-```
-
-Local preview URL:
-
-```text
-http://127.0.0.1:4001/
-```
-
-<span style="color:#b54708"><strong>Important:</strong></span> Use `/` for local preview. The production GitHub Pages site uses `/Team_Mariana/`. Do not edit `_site/` directly because it is generated automatically.
-
 Current page source files are named after the navigation labels:
 
 | Page | Source File | Production URL |
