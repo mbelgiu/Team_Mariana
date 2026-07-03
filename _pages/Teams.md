@@ -1,14 +1,14 @@
 ---
 layout: profiles
 permalink: /teams/
-title: teams
+title: Teams
 description: members of the research group
 nav: true
 nav_order: 4
 
 profiles:
   - align: right
-    image: mariana-belgiu.jpg
+    image: home/mariana-belgiu.jpg
     content: people_director.md
     image_circular: false # crops the image to make it circular
     more_info: >

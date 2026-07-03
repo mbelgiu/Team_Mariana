@@ -2,7 +2,7 @@
 layout: page
 title: Data-Centric AI for Earth Observation
 description: Multi-temporal remote sensing, scarce-label learning, transferability, and environmental mapping.
-img: assets/img/group-placeholder.png
+img: assets/img/research/group-placeholder.png
 importance: 1
 category: research
 related_publications: true

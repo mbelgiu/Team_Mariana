@@ -1,13 +1,13 @@
 ---
 layout: page
 permalink: /publications/
-title: publications
+title: Publications
 description: selected papers, preprints, and group outputs.
 nav: true
 nav_order: 3
 ---
 
-<!-- _pages/publications.md -->
+<!-- _pages/Publications.md -->
 
 <aside class="scholar-profile" aria-label="Google Scholar citation summary">
   <div class="scholar-profile__heading">

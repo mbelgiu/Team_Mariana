@@ -6,7 +6,7 @@
 
     <article class="team-member">
       <div class="team-member__photo">
-        <img src="{{ '/assets/img/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Yangyang Cao">
+        <img src="{{ '/assets/img/teams/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Yangyang Cao">
       </div>
       <div class="team-member__content">
         <h5 class="team-member__name">Yangyang Cao</h5>
@@ -23,7 +23,7 @@
 
     <article class="team-member">
       <div class="team-member__photo">
-        <img src="{{ '/assets/img/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Zhichong Yang">
+        <img src="{{ '/assets/img/teams/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Zhichong Yang">
       </div>
       <div class="team-member__content">
         <h5 class="team-member__name">Zhichong Yang</h5>
@@ -40,7 +40,7 @@
 
     <article class="team-member">
       <div class="team-member__photo">
-        <img src="{{ '/assets/img/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Enzo Campomanes">
+        <img src="{{ '/assets/img/teams/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Enzo Campomanes">
       </div>
       <div class="team-member__content">
         <h5 class="team-member__name">Enzo Campomanes</h5>
@@ -57,7 +57,7 @@
 
     <article class="team-member">
       <div class="team-member__photo">
-        <img src="{{ '/assets/img/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Lorraine Trento Oliveira">
+        <img src="{{ '/assets/img/teams/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Lorraine Trento Oliveira">
       </div>
       <div class="team-member__content">
         <h5 class="team-member__name">Lorraine Trento Oliveira</h5>
@@ -78,7 +78,7 @@
 
     <article class="team-member">
       <div class="team-member__photo">
-        <img src="{{ '/assets/img/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Habtamu Guja Bayu">
+        <img src="{{ '/assets/img/teams/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Habtamu Guja Bayu">
       </div>
       <div class="team-member__content">
         <h5 class="team-member__name">Habtamu Guja Bayu</h5>
@@ -95,7 +95,7 @@
 
     <article class="team-member">
       <div class="team-member__photo">
-        <img src="{{ '/assets/img/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Sina Mohammadi">
+        <img src="{{ '/assets/img/teams/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Sina Mohammadi">
       </div>
       <div class="team-member__content">
         <h5 class="team-member__name">Sina Mohammadi</h5>
@@ -112,7 +112,7 @@
 
     <article class="team-member">
       <div class="team-member__photo">
-        <img src="{{ '/assets/img/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Chenxi Duan">
+        <img src="{{ '/assets/img/teams/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Chenxi Duan">
       </div>
       <div class="team-member__content">
         <h5 class="team-member__name">Chenxi Duan</h5>

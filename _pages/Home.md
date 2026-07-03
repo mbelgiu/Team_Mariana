@@ -1,12 +1,12 @@
 ---
 layout: about
-title: about
+title: Home
 permalink: /
 subtitle: Associate Professor in GeoAI & multi-temporal remote sensing, <a href="https://www.itc.nl/">Faculty ITC, University of Twente</a>
 
 profile:
   align: right
-  image: mariana-belgiu.jpg
+  image: home/mariana-belgiu.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>ITC-SCI-TECH</p>

@@ -8,6 +8,6 @@ rss_icon: true # comment this line to hide the RSS icon
 # wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
 # whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
 custom_social:
-  logo: /assets/img/mariana-belgiu.jpg
-  title: UTwente Profile
+  logo: /assets/img/home/itc-logo.png
+  title: UTwente Research Profile
   url: https://research.utwente.nl/en/persons/mariana-belgiu/

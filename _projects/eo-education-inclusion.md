@@ -2,7 +2,7 @@
 layout: page
 title: EO Education, Skills, and Inclusion
 description: Training, curriculum analysis, and inclusive Earth Observation science.
-img: assets/img/group-placeholder.png
+img: assets/img/research/group-placeholder.png
 importance: 4
 category: research
 ---

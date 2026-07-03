@@ -1,145 +1,595 @@
-# 静态网页编辑指南
+# Team Mariana 网站编辑指南
 
-这个网站是一个基于 Jekyll 和 al-folio 的静态网站。日常修改基本都在 Markdown、YAML、BibTeX、图片和少量 SCSS 文件里完成；不要直接修改 `_site/`，因为它是 Jekyll 自动生成的输出目录。
+<a id="brief-introduction"></a>
 
-## 项目位置
+## 1. Brief Introduction
 
-网站源码目录：
+网站链接：<https://mbelgiu.github.io/Team_Mariana/>
 
-```bash
-/Users/fiko/MacAir_Documents/UT/Website_Mariana/Mariana_Group/work/research-group-site
-```
+<span style="color:#0b6f6a"><strong>重点：</strong></span>这个项目是一个基于 Jekyll 和 al-folio 的静态网站。修改网页时，主要编辑 Markdown、YAML、BibTeX、图片和少量 SCSS 文件。
 
-在 VS Code 中打开这个目录即可编辑网页。
+<span style="color:#b54708"><strong>注意：</strong></span>本地预览时用 `/`，线上网站才使用 `/Team_Mariana/`。不要直接编辑 `_site/`，它是自动生成目录。
 
-## 本地预览
+当前页面源文件已经按导航名称整理：
 
-进入网站目录：
+| 页面 | 源文件 | 线上 URL |
+| --- | --- | --- |
+| Home | `_pages/Home.md` | `/` |
+| Research | `_pages/Research.md` | `/research/` |
+| Publications | `_pages/Publications.md` | `/publications/` |
+| Teams | `_pages/Teams.md` | `/teams/` |
+| News | `_pages/News.md` | `/news/` |
+| Teaching | `_pages/Teaching.md` | `/teaching/` |
 
-```bash
-cd /Users/fiko/MacAir_Documents/UT/Website_Mariana/Mariana_Group/work/research-group-site
-```
-
-启动本地网站：
-
-```bash
-../conda-ruby/bin/bundle exec jekyll serve --host 127.0.0.1 --port 4001 --livereload --livereload-port 35731
-```
-
-浏览器打开：
+图片已经按页面分类存放：
 
 ```text
-http://127.0.0.1:4001/
+assets/img/home/       Home 页面头像、ITC logo、首页相关图片
+assets/img/research/   Research 页面项目图片
+assets/img/teams/      Teams 页面成员头像
 ```
 
-只构建、不启动服务：
+发布到线上：
 
 ```bash
-../conda-ruby/bin/bundle exec jekyll build
+git status
+git add .
+git commit -m "Update website content"
+git push
 ```
 
-## 常用文件结构
+推送到 `main` 分支后，GitHub Actions 会自动重新部署。
+
+<a id="content"></a>
+
+## 2. Content / 目录
+
+- [1. Brief Introduction](#brief-introduction)
+- [2. Content / 目录](#content)
+- [3. Home 页面编辑方法](#home)
+- [4. Research 页面编辑方法](#research)
+- [5. Publication 页面编辑方法](#publication)
+- [6. Teams 页面编辑方法](#teams)
+- [7. News 页面编辑方法](#news)
+- [8. Teaching 页面编辑方法](#teaching)
+- [9. 修改后检查与发布](#check-and-publish)
+
+<a id="home"></a>
+
+## 3. Home 页面编辑方法
+
+Home 页面地址：
 
 ```text
-_config.yml                 网站全局配置
-_pages/                     主要页面
-_projects/                  research 页面中的项目卡片
-_teachings/                 teaching 页面中的课程条目
-_news/                      news 页面和首页 announcement
-_bibliography/papers.bib    publications 页面中的论文数据
-_data/socials.yml           ORCID、Google Scholar、邮箱等社交链接
-_data/venues.yml            publication 缩写/期刊颜色
-_sass/_site.scss            自定义样式
-assets/css/main.scss        样式入口文件
-assets/img/                 图片资源
-_site/                      自动生成的网页，不要手动编辑
-vendor/                     本地 Ruby 依赖，不要手动编辑
+https://mbelgiu.github.io/Team_Mariana/
 ```
 
-## 修改首页 About
+主要文件：
 
-文件：
+| 内容 | 文件 |
+| --- | --- |
+| 页面主体 | `_pages/Home.md` |
+| 底部 ORCID、Google Scholar、Email、RSS、ITC 图标 | `_data/socials.yml` |
+| Home 图片 | `assets/img/home/` |
+| Home 样式 | `_sass/_site.scss` |
 
-```text
-_pages/about.md
+### 3.1 修改页面标题、导航名称、页面 URL
+
+文件：`_pages/Home.md`
+
+代码块：
+
+```yaml
+---
+layout: about
+title: Home
+permalink: /
+subtitle: Associate Professor in GeoAI & multi-temporal remote sensing, <a href="https://www.itc.nl/">Faculty ITC, University of Twente</a>
+---
 ```
 
-可修改内容：
+Update：
 
-- `subtitle`：首页标题下方的职位描述。
-- `profile.image`：右侧头像图片，图片文件放在 `assets/img/`。
-- `profile.more_info`：联系方式、地址、邮箱、链接。
-- 正文段落：主页介绍文字。
-- `Research themes`：研究方向列表。
-- `Teaching and community`：教学与服务介绍。
+- 修改 `title: Home` 可以改变导航栏显示名称。
+- 修改 `subtitle` 可以改变首页副标题。
+- `permalink: /` 表示首页地址，通常不要改。
 
-示例：
+Add：
+
+```yaml
+description: Research group website for Mariana Belgiu.
+```
+
+Delete：
+
+- 不建议删除 `layout`、`title`、`permalink`。
+- 删除 `subtitle` 后首页副标题会消失。
+
+### 3.2 修改头像和联系信息
+
+文件：`_pages/Home.md`
+
+代码块：
 
 ```yaml
 profile:
-  image: mariana-belgiu.jpg
+  align: right
+  image: home/mariana-belgiu.jpg
+  image_circular: false
+  more_info: >
+    <p>ITC-SCI-TECH</p>
+    <p>Department of Earth Observation Science</p>
+    <p>Faculty ITC, University of Twente</p>
+    <p>Langezijds 1326, Enschede</p>
+    <p><a href="mailto:m.belgiu@utwente.nl">m.belgiu@utwente.nl</a></p>
 ```
 
-表示头像使用：
+Update：
+
+- 头像图片放在 `assets/img/home/`。
+- 当前头像路径是 `assets/img/home/mariana-belgiu.jpg`。
+- 修改 `more_info` 中的 `<p>...</p>` 可以更新地址、邮箱、电话和外部链接。
+
+Add：
+
+```html
+<p><a href="https://example.com">New profile link</a></p>
+```
+
+Delete：
+
+- 删除某一行 `<p>...</p>` 即可删除对应联系信息。
+
+### 3.3 修改首页简介文字
+
+文件：`_pages/Home.md`
+
+代码块：
+
+```markdown
+<div class="about-overview" markdown="1">
+
+Dr. Mariana Belgiu is an Associate Professor ...
+
+The group develops data-centric AI methods ...
+
+</div>
+```
+
+Update：
+
+- 直接修改中间段落即可。
+
+Add：
+
+```markdown
+The group also collaborates with international partners on applied GeoAI projects.
+```
+
+Delete：
+
+- 删除不需要的段落。
+- 不建议删除外层 `<div class="about-overview" markdown="1">`。
+
+### 3.4 修改 Research themes
+
+文件：`_pages/Home.md`
+
+代码块：
+
+```markdown
+## Research themes
+
+- **Data-centric AI for Earth Observation:** methods for multi-temporal optical, hyperspectral, and radar imagery.
+- **Learning with scarce labels:** robust and transferable algorithms for mapping crops, land cover, and urban environments.
+
+<div class="expertise-tags" aria-label="Expertise keywords">
+  <span>GeoAI</span>
+  <span>Remote sensing</span>
+</div>
+```
+
+Update：
+
+- 修改列表项可以更新研究方向。
+- 修改 `<span>...</span>` 可以更新关键词标签。
+
+Add：
+
+```markdown
+- **New research theme:** short description here.
+```
+
+```html
+<span>New keyword</span>
+```
+
+Delete：
+
+- 删除某一行 `- **...:** ...` 即可删除一个主题。
+- 删除某个 `<span>...</span>` 即可删除一个标签。
+
+### 3.5 修改 Teaching and community
+
+文件：`_pages/Home.md`
+
+代码块：
+
+```markdown
+## Teaching and community
+
+Mariana teaches optical remote sensing ...
+
+She is active in EO4all ...
+```
+
+Update：
+
+- 修改标题和段落即可。
+
+Add：
+
+- 在该 section 结束前增加新的段落。
+
+Delete：
+
+- 删除不需要的段落。
+
+### 3.6 修改 Home 底部 ORCID、Google Scholar、Email、RSS 和 ITC 图标
+
+文件：`_data/socials.yml`
+
+代码块：
+
+```yaml
+orcid_id: 0000-0002-2147-1894
+scholar_userid: GBi_DcgAAAAJ
+email: m.belgiu@utwente.nl
+rss_icon: true
+
+custom_social:
+  logo: /assets/img/home/itc-logo.png
+  title: UTwente Research Profile
+  url: https://research.utwente.nl/en/persons/mariana-belgiu/
+```
+
+Update：
+
+- `orcid_id` 控制 ORCID 图标链接。
+- `scholar_userid` 控制 Google Scholar 图标链接。
+- `email` 控制邮件图标链接。
+- `rss_icon: true` 表示显示 RSS 图标。
+- `custom_social.logo` 控制最后一个自定义图片图标。当前已经换成 ITC logo。
+- `custom_social.url` 控制点击 ITC logo 后跳转到哪里。
+
+Add：
+
+- 如需更换 ITC logo，把新图片放到 `assets/img/home/`，然后改：
+
+```yaml
+custom_social:
+  logo: /assets/img/home/new-logo.png
+```
+
+Delete：
+
+- 不想显示 RSS，改成：
+
+```yaml
+rss_icon: false
+```
+
+- 不想显示最后一个 ITC 图标，删除整个 `custom_social:` 代码块。
+
+<span style="color:#0b6f6a"><strong>重点：</strong></span>底部图标不是在 `_pages/Home.md` 中改，而是在 `_data/socials.yml` 中改。
+
+<a id="research"></a>
+
+## 4. Research 页面编辑方法
+
+Research 页面地址：
 
 ```text
-assets/img/mariana-belgiu.jpg
+https://mbelgiu.github.io/Team_Mariana/research/
 ```
 
-## 修改 Research 页面
+主要文件：
 
-主页面文件：
+| 内容 | 文件 |
+| --- | --- |
+| 页面介绍和高亮项目 | `_pages/Research.md` |
+| Research 卡片 | `_projects/*.md` |
+| Research 图片 | `assets/img/research/` |
 
-```text
-_pages/projects.md
-```
+### 4.1 修改页面标题和导航
 
-项目卡片文件：
+文件：`_pages/Research.md`
 
-```text
-_projects/data-centric-eo.md
-_projects/hidden-hunger.md
-_projects/urban-vulnerability.md
-_projects/eo-education-inclusion.md
-```
-
-如果要新增一个 research project，可以在 `_projects/` 中新建一个 `.md` 文件。常见 front matter：
+代码块：
 
 ```yaml
 ---
 layout: page
-title: Project title
-description: Short description
-img: assets/img/group-placeholder.png
-importance: 1
-category: research
+title: Research
+permalink: /research/
+description: Earth Observation, data-centric AI, food security, and urban vulnerability research.
+nav: true
+nav_order: 2
+display_categories: [research]
+horizontal: false
 ---
 ```
 
-`importance` 数字越小，排序越靠前。
+Update：
 
-## 修改 Publications 页面
+- `title` 控制导航名称。
+- `description` 控制页面描述。
+- `nav_order` 控制导航顺序。
 
-页面文件：
+Add：
 
-```text
-_pages/publications.md
+```yaml
+display_categories: [research, new-category]
 ```
 
-这里包含：
+Delete：
 
-- Google Scholar 风格的 citation summary。
-- `VIEW ALL` 弹窗柱状图。
-- Public access 区块。
-- bibliography 搜索框和论文列表。
+- 不想显示在导航栏中，改成：
 
-论文数据文件：
-
-```text
-_bibliography/papers.bib
+```yaml
+nav: false
 ```
 
-新增论文时，在 `papers.bib` 中加入 BibTeX 条目。例如：
+### 4.2 修改 Research overview 和关键词
+
+文件：`_pages/Research.md`
+
+代码块：
+
+```markdown
+## Research overview
+
+Mariana Belgiu's research develops GeoAI ...
+
+<div class="expertise-tags" aria-label="Research expertise">
+  <span>Remote sensing</span>
+  <span>GeoAI</span>
+</div>
+```
+
+Update：
+
+- 修改段落更新研究概述。
+- 修改 `<span>...</span>` 更新关键词。
+
+Add：
+
+```html
+<span>New expertise</span>
+```
+
+Delete：
+
+- 删除不需要的 `<span>...</span>`。
+
+### 4.3 修改 Selected funded projects and networks
+
+文件：`_pages/Research.md`
+
+代码块：
+
+```html
+<article class="project-highlight">
+  <h3>EO4Nutri</h3>
+  <p>ESA-funded work using Earth Observation and spatial data ...</p>
+  <span>2023-2025</span>
+</article>
+```
+
+Update：
+
+- `<h3>` 是项目名。
+- `<p>` 是项目简介。
+- `<span>` 是项目时间。
+
+Add：
+
+```html
+<article class="project-highlight">
+  <h3>New Project</h3>
+  <p>Short project description.</p>
+  <span>2026-2028</span>
+</article>
+```
+
+Delete：
+
+- 删除完整的 `<article class="project-highlight"> ... </article>`。
+
+### 4.4 修改 Research 卡片
+
+文件夹：`_projects/`
+
+示例文件：`_projects/data-centric-eo.md`
+
+代码块：
+
+```yaml
+---
+layout: page
+title: Data-Centric AI for Earth Observation
+description: Multi-temporal remote sensing, scarce-label learning, transferability, and environmental mapping.
+img: assets/img/research/group-placeholder.png
+importance: 1
+category: research
+related_publications: true
+---
+```
+
+Update：
+
+- `title` 更新卡片标题。
+- `description` 更新卡片摘要。
+- `img` 更新卡片图片，Research 图片建议放在 `assets/img/research/`。
+- `importance` 控制排序，数字越小越靠前。
+
+Add：
+
+```markdown
+---
+layout: page
+title: New Research Direction
+description: One-sentence summary.
+img: assets/img/research/group-placeholder.png
+importance: 5
+category: research
+---
+
+Full description here.
+```
+
+Delete：
+
+- 删除 `_projects/` 中对应 `.md` 文件即可删除卡片。
+
+<a id="publication"></a>
+
+## 5. Publication 页面编辑方法
+
+Publication 页面地址：
+
+```text
+https://mbelgiu.github.io/Team_Mariana/publications/
+```
+
+主要文件：
+
+| 内容 | 文件 |
+| --- | --- |
+| 页面结构、Google Scholar 摘要、柱状图 | `_pages/Publications.md` |
+| 论文列表 | `_bibliography/papers.bib` |
+| 期刊缩写 | `_data/venues.yml` |
+| Scholar 区块样式 | `_sass/_site.scss` |
+
+### 5.1 修改页面标题和导航
+
+文件：`_pages/Publications.md`
+
+代码块：
+
+```yaml
+---
+layout: page
+permalink: /publications/
+title: Publications
+description: selected papers, preprints, and group outputs.
+nav: true
+nav_order: 3
+---
+```
+
+Update：
+
+- 修改 `title` 更新导航显示名称。
+- 修改 `description` 更新页面描述。
+
+Delete：
+
+- 不想显示在导航栏中，改成 `nav: false`。
+
+### 5.2 修改 Google Scholar citation summary
+
+文件：`_pages/Publications.md`
+
+代码块：
+
+```html
+<table class="scholar-citations" aria-label="Citation metrics">
+  <tbody>
+    <tr>
+      <th scope="row">Citations</th>
+      <td>12304</td>
+      <td>9615</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+Update：
+
+- 修改 `Citations`、`h-index`、`i10-index` 对应数字。
+
+Add：
+
+```html
+<tr>
+  <th scope="row">New metric</th>
+  <td>100</td>
+  <td>80</td>
+</tr>
+```
+
+Delete：
+
+- 删除对应的 `<tr> ... </tr>`。
+
+### 5.3 修改 Citation 柱状图
+
+文件：`_pages/Publications.md`
+
+代码块：
+
+```html
+<div class="scholar-chart__bar" style="--height: 32%">
+  <span class="scholar-chart__year">2019</span>
+  <span class="scholar-chart__value">704</span>
+</div>
+```
+
+Update：
+
+- `--height` 控制柱子高度。
+- `scholar-chart__year` 控制年份。
+- `scholar-chart__value` 控制鼠标悬停时显示的数值。
+- 预览图和弹窗图各有一份数据，通常要同时修改。
+
+Add：
+
+```html
+<div class="scholar-chart__bar" style="--height: 60%">
+  <span class="scholar-chart__year">2027</span>
+  <span class="scholar-chart__value">1320</span>
+</div>
+```
+
+Delete：
+
+- 删除一个完整的 `scholar-chart__bar`。
+
+### 5.4 修改 Public access
+
+文件：`_pages/Publications.md`
+
+代码块：
+
+```html
+<span class="scholar-access__closed">2 articles not available</span>
+<span class="scholar-access__open">29 articles available</span>
+```
+
+Update：
+
+- 修改文章数量即可。
+
+Delete：
+
+- 删除整个 `<div class="scholar-access"> ... </div>` 可以移除 Public access。
+
+### 5.5 修改论文列表
+
+文件：`_bibliography/papers.bib`
+
+代码块：
 
 ```bibtex
 @article{example2026paper,
@@ -153,96 +603,224 @@ _bibliography/papers.bib
 }
 ```
 
-`selected = {true}` 会让论文也出现在首页 selected papers 区域。
+Update：
 
-期刊缩写颜色可以在这里改：
+- 修改 `title`、`author`、`journal`、`year` 等字段。
+- `selected = {true}` 会让论文出现在 Home 页 selected publications。
 
-```text
-_data/venues.yml
-```
+Add：
 
-## 修改 Teams 页面
+- 在 `papers.bib` 末尾添加新的 BibTeX 条目。
 
-Teams 页面入口：
+Delete：
 
-```text
-_pages/profiles.md
-```
+- 删除完整的 `@article{...}` 或 `@misc{...}` 条目。
 
-PI 信息：
+<a id="teams"></a>
 
-```text
-_pages/people_director.md
-```
+## 6. Teams 页面编辑方法
 
-学生和毕业生列表：
+Teams 页面地址：
 
 ```text
-_pages/people_students.md
+https://mbelgiu.github.io/Team_Mariana/teams/
 ```
 
-常见修改：
+主要文件：
 
-- 修改成员姓名。
-- 修改在读时间或毕业时间。
-- 修改研究兴趣。
-- 添加邮箱。
-- 替换头像图片。
+| 内容 | 文件 |
+| --- | --- |
+| Teams 页面入口 | `_pages/Teams.md` |
+| PI 介绍 | `_pages/people_director.md` |
+| 学生和 alumni 列表 | `_pages/people_students.md` |
+| 成员头像 | `assets/img/teams/` |
 
-头像图片放在：
+### 6.1 修改 Teams 页面入口
 
-```text
-assets/img/
-```
+文件：`_pages/Teams.md`
 
-然后在 HTML 中引用：
-
-```liquid
-{{ '/assets/img/your-image.jpg' | relative_url }}
-```
-
-## 修改 Teaching 页面
-
-主页面：
-
-```text
-_pages/teaching.md
-```
-
-课程条目：
-
-```text
-_teachings/advanced-image-analysis.md
-_teachings/machine-learning-geospatial-sciences.md
-_teachings/optical-remote-sensing-image-analysis.md
-_teachings/space-time.md
-```
-
-新增课程时，在 `_teachings/` 中添加新的 `.md` 文件。注意 front matter 中的 `title`、`semester`、`year`、`description` 等字段。
-
-## 修改 News
-
-News 页面：
-
-```text
-_pages/news.md
-```
-
-新闻条目：
-
-```text
-_news/announcement_1.md
-_news/announcement_2.md
-_news/announcement_3.md
-```
-
-新增新闻时，在 `_news/` 中添加 `.md` 文件。示例：
+代码块：
 
 ```yaml
+profiles:
+  - align: right
+    image: home/mariana-belgiu.jpg
+    content: people_director.md
+    image_circular: false
+    more_info: >
+      <p>Associate Professor in GeoAI & multi-temporal remote sensing</p>
+  - content: people_students.md
+```
+
+Update：
+
+- `image` 控制 PI 图片。
+- `content: people_director.md` 表示 PI 文字来自 `_pages/people_director.md`。
+- `content: people_students.md` 表示学生列表来自 `_pages/people_students.md`。
+
+Delete：
+
+- 删除 `- content: people_students.md` 会隐藏学生列表。
+
+### 6.2 修改 PI 介绍
+
+文件：`_pages/people_director.md`
+
+代码块：
+
+```markdown
+### Dr. Mariana Belgiu
+
+Mariana Belgiu is an Associate Professor ...
+
+<dl class="profile-contact">
+  <dt>Email</dt>
+  <dd><a href="mailto:m.belgiu@utwente.nl">m.belgiu@utwente.nl</a></dd>
+</dl>
+```
+
+Update：
+
+- 修改标题、段落、`<dt>` 和 `<dd>`。
+
+Add：
+
+```html
+<dt>Office</dt>
+<dd>Langezijds 1326, University of Twente</dd>
+```
+
+Delete：
+
+- 删除一组 `<dt>...</dt>` 和 `<dd>...</dd>`。
+
+### 6.3 修改 Current PhD Researchers
+
+文件：`_pages/people_students.md`
+
+代码块：
+
+```html
+<article class="team-member">
+  <div class="team-member__photo">
+    <img src="{{ '/assets/img/teams/Anonymous_Photo.jpg' | relative_url }}" alt="Portrait placeholder for Yangyang Cao">
+  </div>
+  <div class="team-member__content">
+    <h5 class="team-member__name">Yangyang Cao</h5>
+    <dl class="team-member__details">
+      <dt>Period</dt>
+      <dd>2023-present</dd>
+      <dt>Research interests</dt>
+      <dd>Grain protein prediction using deep learning with UAV and spaceborne hyperspectral imagery.</dd>
+      <dt>Email</dt>
+      <dd>To be added</dd>
+    </dl>
+  </div>
+</article>
+```
+
+Update：
+
+- 修改姓名、在读时间、研究兴趣和邮箱。
+- 成员头像建议放在 `assets/img/teams/`。
+
+Add：
+
+```html
+<article class="team-member">
+  <div class="team-member__photo">
+    <img src="{{ '/assets/img/teams/student-photo.jpg' | relative_url }}" alt="Portrait of Student Name">
+  </div>
+  <div class="team-member__content">
+    <h5 class="team-member__name">Student Name</h5>
+    <dl class="team-member__details">
+      <dt>Period</dt>
+      <dd>2026-present</dd>
+      <dt>Research interests</dt>
+      <dd>Short research interest description.</dd>
+      <dt>Email</dt>
+      <dd><a href="mailto:name@example.com">name@example.com</a></dd>
+    </dl>
+  </div>
+</article>
+```
+
+Delete：
+
+- 删除完整的 `<article class="team-member"> ... </article>`。
+
+### 6.4 修改 Alumni
+
+文件：`_pages/people_students.md`
+
+Update：
+
+- Alumni 和 Current PhD Researchers 的结构一样。
+- 修改 Alumni 区块中的 `<article class="team-member">` 即可。
+
+Add：
+
+- 在 Alumni 的 `<section>` 中增加新的 `<article>`。
+
+Delete：
+
+- 删除对应 alumni 的完整 `<article>`。
+
+<a id="news"></a>
+
+## 7. News 页面编辑方法
+
+News 页面地址：
+
+```text
+https://mbelgiu.github.io/Team_Mariana/news/
+```
+
+主要文件：
+
+| 内容 | 文件 |
+| --- | --- |
+| News 页面入口 | `_pages/News.md` |
+| News 条目 | `_news/*.md` |
+| Home 页 News 数量 | `_pages/Home.md` |
+
+### 7.1 修改 News 页面入口
+
+文件：`_pages/News.md`
+
+代码块：
+
+```markdown
+---
+layout: page
+title: News
+permalink: /news/
+nav: true
+nav_order: 5
+---
+
+{% include news.liquid %}
+```
+
+Update：
+
+- 修改 `title` 和 `nav_order`。
+
+Delete：
+
+- 不要删除 `{% include news.liquid %}`，否则新闻列表不会显示。
+
+### 7.2 新增 News
+
+文件夹：`_news/`
+
+Add：
+
+```markdown
 ---
 layout: post
-title: News title
-date: 2026-06-29 09:00:00+0200
+title: New announcement title
+date: 2026-07-03 09:00:00+0200
 inline: false
 related_posts: false
 ---
@@ -250,146 +828,190 @@ related_posts: false
 News content here.
 ```
 
-如果 `inline: true`，通常会以简短公告形式显示。
+Update：
 
-## 修改导航栏
+- 修改 `title`、`date`、`inline` 和正文。
 
-导航栏由每个页面 front matter 中的字段控制：
+Delete：
+
+- 删除对应 `_news/*.md` 文件即可。
+
+### 7.3 修改 Home 页 News 数量
+
+文件：`_pages/Home.md`
+
+代码块：
 
 ```yaml
+announcements:
+  enabled: true
+  scrollable: true
+  limit: 5
+```
+
+Update：
+
+- 修改 `limit` 控制 Home 页最多显示几条 News。
+
+Delete：
+
+```yaml
+announcements:
+  enabled: false
+```
+
+<a id="teaching"></a>
+
+## 8. Teaching 页面编辑方法
+
+Teaching 页面地址：
+
+```text
+https://mbelgiu.github.io/Team_Mariana/teaching/
+```
+
+主要文件：
+
+| 内容 | 文件 |
+| --- | --- |
+| Teaching 页面介绍 | `_pages/Teaching.md` |
+| 课程条目 | `_teachings/*.md` |
+
+### 8.1 修改 Teaching 页面标题和简介
+
+文件：`_pages/Teaching.md`
+
+代码块：
+
+```markdown
+---
+layout: page
+permalink: /teaching/
+title: Teaching
+description: Courses, supervision, and teaching activities in Earth Observation and geospatial AI.
 nav: true
-nav_order: 3
+nav_order: 6
+---
+
+Mariana teaches and supervises students in Earth Observation ...
 ```
 
-含义：
+Update：
 
-- `nav: true`：显示在导航栏。
-- `nav_order`：导航顺序，数字越小越靠前。
-- `title`：导航栏显示名称。
+- 修改 `title`、`description` 和正文简介。
 
-主要页面：
+Delete：
 
-```text
-_pages/about.md          /
-_pages/projects.md       /research/
-_pages/publications.md   /publications/
-_pages/profiles.md       /teams/
-_pages/news.md           /news/
-_pages/teaching.md       /teaching/
+- 不想显示在导航栏中，改成 `nav: false`。
+
+### 8.2 修改 Teaching areas
+
+文件：`_pages/Teaching.md`
+
+代码块：
+
+```markdown
+## Teaching areas
+
+- Optical remote sensing and image analysis.
+- Machine learning and deep learning for geospatial sciences.
 ```
 
-## 修改样式
+Update：
 
-主要自定义样式文件：
+- 修改列表项。
 
-```text
-_sass/_site.scss
+Add：
+
+```markdown
+- New teaching area.
 ```
 
-样式入口文件：
+Delete：
 
-```text
-assets/css/main.scss
+- 删除不需要的列表项。
+
+### 8.3 修改课程列表
+
+文件夹：`_teachings/`
+
+示例：
+
+```markdown
+---
+layout: course
+title: Advanced Image Analysis
+description: Advanced methods for analyzing remote sensing imagery.
+instructor: Mariana Belgiu
+year: 2025
+term: 2025/2026
+location: Faculty ITC, University of Twente
+course_id: advanced-image-analysis
+---
+
+This recurring ITC course focuses on advanced analysis of Earth Observation imagery.
 ```
 
-通常只需要改 `_sass/_site.scss`。例如：
+Update：
 
-- 首页分隔线和内容宽度。
-- Research project 卡片样式。
-- Teams 成员卡片样式。
-- Publications 的 citation summary 和弹窗样式。
-- Teaching 页面样式。
+- 修改 `title`、`description`、`year`、`term`、`location` 和正文。
 
-不建议直接修改 theme gem 或 `vendor/` 里的文件。
+Add：
 
-## 修改全局配置
+```markdown
+---
+layout: course
+title: New Course
+description: Short course description.
+instructor: Mariana Belgiu
+year: 2026
+term: 2026/2027
+location: Faculty ITC, University of Twente
+course_id: new-course
+---
 
-文件：
-
-```text
-_config.yml
+Full course description here.
 ```
 
-常见字段：
+Delete：
 
-```yaml
-title: Mariana Belgiu
-description: ...
-keywords: ...
-max_width: 1080px
-url: http://localhost:4000
-baseurl:
-```
+- 删除 `_teachings/` 中对应课程文件。
 
-如果发布到 GitHub Pages，需要根据仓库类型修改：
+<a id="check-and-publish"></a>
 
-个人主页仓库：
+## 9. 修改后检查与发布
 
-```yaml
-url: https://your-username.github.io
-baseurl:
-```
-
-普通项目仓库：
-
-```yaml
-url: https://your-username.github.io
-baseurl: /repository-name
-```
-
-## 哪些文件不要手动编辑
-
-不要手动编辑：
-
-```text
-_site/
-vendor/
-.jekyll-cache/
-```
-
-原因：
-
-- `_site/` 是自动生成结果，每次构建都会覆盖。
-- `vendor/` 是 Ruby 依赖。
-- `.jekyll-cache/` 是 Jekyll 缓存。
-
-## 发布前检查
-
-发布前建议运行：
+本地检查：
 
 ```bash
 ../conda-ruby/bin/bundle exec jekyll build
 ```
 
-然后本地预览：
+本地预览：
 
 ```bash
-../conda-ruby/bin/bundle exec jekyll serve --host 127.0.0.1 --port 4001 --livereload --livereload-port 35731
+../conda-ruby/bin/bundle exec jekyll serve --host 127.0.0.1 --port 4001 --baseurl '' --livereload --livereload-port 35731
 ```
 
-检查这些页面：
+浏览器打开：
 
 ```text
-/
-/research/
-/publications/
-/teams/
-/news/
-/teaching/
+http://127.0.0.1:4001/
 ```
 
-## GitHub 发布提醒
+发布到线上：
 
-如果上传到 GitHub，建议上传源码文件，不上传本地运行环境：
-
-不要上传：
-
-```text
-vendor/
-_site/
-.jekyll-cache/
-../conda-ruby/
+```bash
+git status
+git add .
+git commit -m "Update website content"
+git push
 ```
 
-建议使用 GitHub Actions 构建并发布 GitHub Pages。
+<span style="color:#b54708"><strong>不要改：</strong></span>
 
+- `_site/`
+- `.jekyll-cache/`
+- `vendor/`
+
+这些目录是构建输出或依赖目录，不是日常内容编辑入口。

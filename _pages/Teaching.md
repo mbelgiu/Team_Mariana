@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /teaching/
-title: teaching
+title: Teaching
 description: Courses, supervision, and teaching activities in Earth Observation and geospatial AI.
 nav: true
 nav_order: 6

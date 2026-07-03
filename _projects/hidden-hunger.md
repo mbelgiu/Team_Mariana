@@ -2,7 +2,7 @@
 layout: page
 title: Earth Observation for Hidden Hunger
 description: Remote sensing and hyperspectral methods for crop nutrition, food security, and nutrient estimation.
-img: assets/img/group-placeholder.png
+img: assets/img/research/group-placeholder.png
 importance: 2
 category: research
 related_publications: true

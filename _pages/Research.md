@@ -1,6 +1,6 @@
 ---
 layout: page
-title: research
+title: Research
 permalink: /research/
 description: Earth Observation, data-centric AI, food security, and urban vulnerability research.
 nav: true
@@ -9,7 +9,7 @@ display_categories: [research]
 horizontal: false
 ---
 
-<!-- pages/projects.md -->
+<!-- _pages/Research.md -->
 
 <section class="research-overview" markdown="1">
 
